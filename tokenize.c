@@ -1,17 +1,28 @@
 #include "main.h"
 
-void tokenize(char *command, char *tokens[], const char *delim) {
-    int i = 0;
-    tokens[i] = strtok(command, delim);
+/**
+ * tokenize - func to convert commands into tokens
+ *
+ * @command: command thats being input
+ * @tokens: array of tokens
+ * @delim: deliminator
+ *
+ */
+void tokenize(char *command, char *tokens[], const char *delim)
+{
+	int i = 0;
 
-    while(tokens[i] != NULL) {
-        tokens[++i] = strtok(NULL, delim);
-    }
+	tokens[i] = strtok(command, delim);
 
-    tokens[i] = NULL;
+	while (tokens[i] != NULL)
+	{
+		tokens[++i] = strtok(NULL, delim);
+	}
 
-    // for (int i = 0; tokens[i] != NULL; i++) {
-    //     printf("%s ", tokens[i]);
-    // }
-    // printf("\n");
+	tokens[i] = NULL;
+
+	/* for (int i = 0; tokens[i] != NULL; i++) { */
+	/*     printf("%s ", tokens[i]); */
+	/* } */
+	/* printf("\n"); */
 }
