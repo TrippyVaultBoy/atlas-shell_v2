@@ -11,8 +11,6 @@ void parse_command(char *args[]) {
         char path[1024] = "/bin/";
         strcat(path, args[0]);
 
-        printf("PATH: %s\n", path);
-
         char *newenvp[] = { NULL };
         char *newargv[] = { path, NULL };
 
