@@ -28,11 +28,11 @@ int main() {
 	    command[strcspn(command, "\n")] = 0;
         tokenize(command, tokens, delim);
 
-        if (strcmp(tokens[0], "exit") == 0) {
+        if (_strcmp(tokens[0], "exit") == 0) {
             exit_flag = 1;
-        } else if (strcmp(tokens[0], "cd") == 0) {
+        } else if (_strcmp(tokens[0], "cd") == 0) {
             handle_cd(tokens[1], prev_dir, curr_dir);
-        } else if (strcmp(tokens[0], "env") == 0) {
+        } else if (_strcmp(tokens[0], "env") == 0) {
             handle_env();
         } else {
             parse_command(tokens);

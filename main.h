@@ -15,5 +15,6 @@ void tokenize(char *command, char *tokens[], const char *delim);
 void handle_cd(char *directory, char *prev_dir, char *curr_dir);
 int handle_env(void);
 void parse_command(char *args[]);
+int _strcmp(const char *s1, const char *s2);
 
 #endif

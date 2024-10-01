@@ -22,7 +22,7 @@ void handle_cd(char *directory, char *prev_dir, char *curr_dir)
 
 		setenv("PWD", home_dir, 1);
 	}
-	else if (strcmp(directory, "-") == 0)
+	else if (_strcmp(directory, "-") == 0)
 	{
 		if (chdir(prev_dir) != 0)
 		{
