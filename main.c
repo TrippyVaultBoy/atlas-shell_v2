@@ -2,11 +2,12 @@
 
 int main() {
     int exit_flag = 0;
-    char command[100];
+    char *command = NULL;
     char *tokens[100];
     const char *delim = " ";
     char prev_dir[100] = "";
     char curr_dir[100];
+    size_t len = 100;
 
     getcwd(curr_dir, sizeof(curr_dir));
     int is_interactive = isatty(STDIN_FILENO);
@@ -17,7 +18,7 @@ int main() {
             fflush(stdout);
         }
 
-        if (fgets(command, sizeof(command), stdin) == NULL) {
+        if (getline(&command, &len, stdin) == -1) {
             if (!is_interactive) {
                 break;
             }
