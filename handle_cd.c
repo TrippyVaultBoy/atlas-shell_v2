@@ -35,7 +35,7 @@ void handle_cd(char *directory, char *prev_dir, char *curr_dir)
 	{
 		if (chdir(directory) != 0)
 		{
-			printf("chdir error\n");
+			printf("cd: %s: No such file or directory\n", directory);
 		}
 
 		setenv("PWD", directory, 1);

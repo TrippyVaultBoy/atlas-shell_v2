@@ -15,7 +15,7 @@ void parse_command(char *args[]) {
         char *newargv[] = { path, NULL };
 
         if ((execve(path, newargv, newenvp)) == -1) {
-            perror("execve error\n");
+            perror("execve error");
             exit(1);
         }
     } else {
