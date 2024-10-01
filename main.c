@@ -4,7 +4,7 @@ int main() {
     int exit_flag = 0;
     char *command = NULL;
     char *tokens[100];
-    const char *delim = "\n ";
+    const char *delim = " \n";
     char prev_dir[100] = "";
     char curr_dir[100];
     size_t len = 100;
