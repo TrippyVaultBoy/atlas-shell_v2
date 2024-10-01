@@ -21,8 +21,8 @@ void tokenize(char *command, char *tokens[], const char *delim)
 
 	tokens[i] = NULL;
 
-	/* for (int i = 0; tokens[i] != NULL; i++) { */
-	/*     printf("%s ", tokens[i]); */
-	/* } */
-	/* printf("\n"); */
+	for (int i = 0; tokens[i] != NULL; i++) {
+	    printf("%s+", tokens[i]);
+	}
+	printf("\n");
 }
