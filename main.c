@@ -25,7 +25,7 @@ int main() {
             continue;
         }
 
-	    command[strcspn(command, "\n")] = 0;
+	    command[_strcspn(command, "\n")] = 0;
         tokenize(command, tokens, delim);
 
         if (_strcmp(tokens[0], "exit") == 0) {

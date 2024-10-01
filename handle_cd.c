@@ -41,7 +41,7 @@ void handle_cd(char *directory, char *prev_dir, char *curr_dir)
 		setenv("PWD", directory, 1);
 	}
 
-    strcpy(prev_dir, curr_dir);
+    _strcpy(prev_dir, curr_dir);
 	if (getcwd(curr_dir, 100) == NULL) {
         perror("getcwd error");
     }
