@@ -9,9 +9,22 @@ int main() {
     char curr_dir[100];
 
     getcwd(curr_dir, sizeof(curr_dir));
+    int is_interactive = isatty(STDIN_FILENO);
 
     while (!exit_flag) {
-        read_command(command);
+        if (is_interactive) {
+            printf("shellv2: ");
+            fflush(stdout);
+        }
+
+        if (fgets(command, sizeof(command), stdin) == NULL) {
+            if (!is_interactive) {
+                break;
+            }
+            continue;
+        }
+
+	    command[strcspn(command, "\n")] = 0;
         tokenize(command, tokens, delim);
 
         if (strcmp(tokens[0], "exit") == 0) {

@@ -10,7 +10,7 @@
 
 extern char **environ;
 
-void read_command(char *command);
+void read_command(char *command, int is_interactive, int *exit_flag);
 void tokenize(char *command, char *tokens[], const char *delim);
 void handle_cd(char *directory, char *prev_dir, char *curr_dir);
 int handle_env(void);

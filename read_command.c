@@ -6,10 +6,18 @@
  * @command: command being input
  */
 
-void read_command(char *command)
+void read_command(char *command, int is_interactive, int *exit_flag)
 {
-	printf("shellv2: ");
+    if (is_interactive) {
+	    printf("shellv2: ");
+        fflush(stdout);
+    }
 
-	fgets(command, 100, stdin);
+    if (fgets(command, sizeof(command), stdin) == NULL) {
+        if (!is_interactive) {
+            *exit_flag = 1;
+        }
+    }
+
 	command[strcspn(command, "\n")] = 0;
 }
