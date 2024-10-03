@@ -1,45 +1,87 @@
 #include "main.h"
 
-int main() {
-    int exit_flag = 0;
-    char *command = NULL;
-    char *tokens[100];
-    const char *delim = " ";
-    char prev_dir[100] = "";
-    char curr_dir[100];
-    size_t len = 100;
+/**
+ * main - main shell function
+ *
+ * Return: success
+ */
+int main(void)
+{
+	int exit_flag = 0;
+	char *command = NULL;
+	char *tokens[100];
+	const char *delim = " ";
+	char prev_dir[100] = "";
+	char curr_dir[100];
+	size_t len = 100;
 
-    getcwd(curr_dir, sizeof(curr_dir));
-    int is_interactive = isatty(STDIN_FILENO);
+	getcwd(curr_dir, sizeof(curr_dir));
+	int is_interactive = isatty(STDIN_FILENO);
 
-    while (!exit_flag) {
-        if (is_interactive) {
-            printf("shellv2: ");
-            fflush(stdout);
-        }
+	while (!exit_flag)
+	{
+		if (is_interactive)
+		{
+			printf("shellv2: ");
+			fflush(stdout);
+		}
 
-        if (getline(&command, &len, stdin) == -1) {
-            if (!is_interactive) {
-                break;
-            }
-            continue;
-        }
+		if (getline(&command, &len, stdin) == -1)
+		{
+			if (!is_interactive)
+			{
+				break;
+			}
+			else
+			{
+				continue;
+			}
+		}
 
-	    command[_strcspn(command, "\n")] = 0;
-        tokenize(command, tokens, delim);
+		command[_strcspn(command, "\n")] = 0;
+		tokenize(command, tokens, delim);
 
-        if (_strcmp(tokens[0], "exit") == 0) {
-            exit_flag = 1;
-        } else if (_strcmp(tokens[0], "cd") == 0) {
-            handle_cd(tokens[1], prev_dir, curr_dir);
-        } else if (_strcmp(tokens[0], "env") == 0) {
-            handle_env();
-        } else {
-            parse_command(tokens);
-        }
+		if (_strcmp(tokens[0], "exit") == 0)
+		{
+			exit_flag = 1;
+		}
+		else if (_strcmp(tokens[0], "cd") == 0)
+		{
+			handle_cd(tokens[1], prev_dir, curr_dir);
+		}
+		else if (_strcmp(tokens[0], "env") == 0)
+		{
+			handle_env();
+		}
+		else if (_strcmp(tokens[0], "pwd") == 0)
+		{
+			print_cwd();
+		}
+		else
+		{
+			if (*tokens[0] == '/')
+			{
+				parse_command(tokens);
+			}
+			else
+			{
+				char *full_path = find_executable(tokens[0]);
 
-    }
+				if (full_path != NULL)
+				{
+					tokens[0] = full_path;
+					parse_command(tokens);
+					free(full_path);
+				}
+				else
+				{
+					fprintf(stderr, "hsh: %s: not found\n", tokens[0]);
+				}
+			}
+		}
 
-    free(command);
-    return 0;
+	}
+
+	free(command);
+	return (0);
 }

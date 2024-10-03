@@ -1,7 +1,7 @@
 CC = gcc
 CFlags = -Wall -Werror -Wextra -pedantic
 TARGET = hsh
-SRC = main.c read_command.c tokenize.c handle_cd.c handle_env.c parse_command.c _strcmp.c _strcspn.c _strcpy.c
+SRC = main.c read_command.c tokenize.c handlers.c parse_command.c helpers.c executables.c
 HEADER = main.h
 
 all: $(TARGET)

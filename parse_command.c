@@ -1,25 +1,45 @@
 #include "main.h"
 
-void parse_command(char *args[]) {
-    if (args[0] == NULL) {
-        return;
-    }
+/**
+ * parse_command - func to parse the command
+ *
+ * @args: command
+ */
+void parse_command(char *args[])
+{
+	int status;
 
-    pid_t pid = fork();
+	if (args[0] == NULL)
+	{
+		perror("parse_command: No arguments");
+		return;
+	}
 
-    if (pid == 0) {
-        char path[1024] = "/bin/";
-        strcat(path, args[0]);
+	pid_t pid = fork();
 
-        char *newenvp[] = { NULL };
-        char *newargv[] = { path, NULL };
+	if (pid < 0)
+	{
+		perror("fork failed");
+		return;
+	}
+	else if (pid == 0)
+	{
+		char *path = find_executable(args[0]);
 
-        if ((execve(path, newargv, newenvp)) == -1) {
-            perror("execve error");
-            exit(1);
-        }
-    } else {
-        int status;
-        waitpid(pid, &status, 0);
-    }
+		if (path == NULL)
+		{
+			fprintf(stderr, "hsh: %s: not found\n", args[0]);
+			exit(127);
+		}
+
+		/* printf("Executing command: %s\n", path); */
+		execve(path, args, environ);
+		perror("execve error");
+		free(path);
+		exit(127);
+	}
+	else
+	{
+		waitpid(pid, &status, 0);
+	}
 }

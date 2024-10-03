@@ -1,12 +1,14 @@
 #ifndef MAIN_H_
 #define MAIN_H_
 
+#include <limits.h>
 #include <stdio.h>
 #include <string.h>
 #include <stddef.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <sys/stat.h>
 
 extern char **environ;
 
@@ -18,5 +20,8 @@ void parse_command(char *args[]);
 int _strcmp(const char *s1, const char *s2);
 size_t _strcspn(const char *s, const char *reject);
 char *_strcpy(char *dest, const char *src);
+int _strlen(const char *s);
+char *find_executable(const char *cmd);
+void print_cwd(void);
 
 #endif
