@@ -22,6 +22,32 @@ char *_strdup(const char *s)
 
 
 /**
+ * _strncmp - Compares the first n characters of two strings.
+ *
+ * @s1: First string to compare.
+ * @s2: Second string to compare.
+ * @n: Maximum number of characters to compare.
+ *
+ * Return: Negative if s1 < s2, zero if s1 == s2, positive if s1 > s2.
+ */
+int _strncmp(const char *s1, const char *s2, size_t n)
+{
+	for (size_t i = 0; i < n; i++)
+	{
+		if (s1[i] == '\0' || s2[i] == '\0')
+		{
+			return (s1[i] - s2[i]);
+		}
+		if (s1[i] != s2[i])
+		{
+			return (s1[i] - s2[i]);
+		}
+	}
+	return (0);
+}
+
+
+/**
  * get_custom_env - Custom implementation of getenv()
  * @var: Variable name to search for
  *
