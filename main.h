@@ -29,5 +29,6 @@ void redirect_input(char *filename, char *command);
 void handle_redirection(char *token, char *command);
 char *get_custom_env(const char *var);
 char *_strdup(const char *s);
+char *_strchr(const char *s, int c);
 
 #endif

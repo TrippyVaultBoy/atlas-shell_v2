@@ -15,13 +15,15 @@ void tokenize(char *command, char *tokens[], const char *delim)
 	tokens[i] = strtok(command, delim);
 
 	while (tokens[i] != NULL)
-	{   
+	{
 		tokens[++i] = strtok(NULL, delim);
 	}
 
 	tokens[i] = NULL;
 
-	// for (int j = 0; tokens[j] != NULL; j++) {
-    //     printf("Token[%d]: '%s'\n", j, tokens[j]);
-    // }
+	/**
+	 * for (int j = 0; tokens[j] != NULL; j++) {
+	 *	printf("Token[%d]: '%s'\n", j, tokens[j]);
+	 *}
+	 */
 }

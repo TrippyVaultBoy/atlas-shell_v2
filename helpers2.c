@@ -59,12 +59,34 @@ char *get_custom_env(const char *var)
 
 	for (env_var = environ; *env_var != NULL; env_var++)
 	{
-		char *equals = strchr(*env_var, '=');
+		char *equals = _strchr(*env_var, '=');
 
 		if (equals && _strncmp(*env_var, var, equals - *env_var) == 0)
 		{
 			return (equals + 1);
 		}
+	}
+	return (NULL);
+}
+
+
+/**
+ * _strchr - Searches for the first occurrence of a character in a string
+ *
+ * @s: string
+ * @c: count
+ *
+ * Return: character or NULL
+ */
+char *_strchr(const char *s, int c)
+{
+	while (*s != '\0')
+	{
+		if (*s == c)
+		{
+			return ((char *)s);
+		}
+		s++;
 	}
 	return (NULL);
 }
