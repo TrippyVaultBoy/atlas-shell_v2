@@ -13,7 +13,7 @@ void handle_cd(char *directory, char *prev_dir, char *curr_dir)
 {
 	if (directory == NULL || _strcmp(directory, "~") == 0)
 	{
-		chdir(getenv("HOME"));
+		chdir(get_custom_env("HOME"));
 	}
 	else if (_strcmp(directory, "-") == 0)
 	{
@@ -36,7 +36,7 @@ void handle_cd(char *directory, char *prev_dir, char *curr_dir)
 		}
 	}
 
-	strcpy(prev_dir, curr_dir);
+	_strcpy(prev_dir, curr_dir);
 	if (getcwd(curr_dir, 100) == NULL)
 	{
 		perror("getcwd");

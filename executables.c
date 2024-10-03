@@ -13,16 +13,11 @@ char *find_executable(const char *cmd)
 	{
 		if (access(cmd, X_OK) == 0)
 		{
-			return (strdup(cmd));
-		}
-		else
-		{
-			return (NULL);
+			return (_strdup(cmd));
 		}
 	}
 
-
-	char *path = getenv("PATH");
+	char *path = get_custom_env("PATH");
 	char *token;
 	size_t cmd_len = _strlen(cmd);
 	char *full_path = malloc(128 + cmd_len + 2);
@@ -36,7 +31,6 @@ char *find_executable(const char *cmd)
 
 		if (access(full_path, X_OK) == 0)
 		{
-			printf("Found executable: %s\n", full_path);
 			return (full_path);
 		}
 

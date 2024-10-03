@@ -23,5 +23,5 @@ void read_command(char *command, int is_interactive, int *exit_flag)
 		}
 	}
 
-	command[strcspn(command, "\n")] = 0;
+	command[_strcspn(command, "\n")] = 0;
 }

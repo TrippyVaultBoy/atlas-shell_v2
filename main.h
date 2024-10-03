@@ -2,6 +2,7 @@
 #define MAIN_H_
 
 #include <limits.h>
+#include <fcntl.h>
 #include <stdio.h>
 #include <string.h>
 #include <stddef.h>
@@ -23,5 +24,10 @@ char *_strcpy(char *dest, const char *src);
 int _strlen(const char *s);
 char *find_executable(const char *cmd);
 void print_cwd(void);
+void redirect_output(char *filename, char *command);
+void redirect_input(char *filename, char *command);
+void handle_redirection(char *token, char *command);
+char *get_custom_env(const char *var);
+char *_strdup(const char *s);
 
 #endif
