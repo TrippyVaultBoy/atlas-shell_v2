@@ -1,1 +1,37 @@
-Not empty
+Name
+    Atlas Shell V2
+
+Description
+    Atlas Shell V2 is a unix command-line interpreter that executes commands
+    read from a command line string, standard input, or a specified file
+
+Built-in commands
+    exit
+    Exits the shell by breaking the loop
+
+    cd [directory]
+    Changes the current directory, if no directory is specified, it defaults to $HOME
+
+    cd [-]
+    Changes to the previous directory
+
+    env
+    Displays the current environment variable.
+
+Examples
+    Running in interactive mode:
+    ./hsh
+    
+    Running in non-interactive mode:
+    echo "ls" | ./hsh
+
+    Changing directories:
+    cd
+    cd /bin
+    cd -
+
+Author:
+    See AUTHORS.md
+
+    
+    
