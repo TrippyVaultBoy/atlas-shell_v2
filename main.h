@@ -27,8 +27,21 @@ void print_cwd(void);
 void redirect_output(char *filename, char *command);
 void redirect_input(char *filename, char *command);
 void handle_redirection(char *token, char *command);
+char *heredoc(char *delimiter);
 char *get_custom_env(const char *var);
 char *_strdup(const char *s);
 char *_strchr(const char *s, int c);
+char *_strstr(const char *haystack, const char *needle);
+void setenv_builtin(char *var, char *value);
+void unsetenv_builtin(char *var);
+void execute_command(char **tokens);
+int and_operator(char **commands);
+int or_operator(char **commands);
+int single_command(char **commands);
+void execute_pipe(char **commands);
+void next_command(char **commands);
+int _strncmp(const char *s1, const char *s2, size_t n);
+char *_strcat(char *dest, char *src);
+
 
 #endif

@@ -85,3 +85,41 @@ int _strlen(const char *s)
 	}
 	return (length);
 }
+
+
+/**
+ * _strstr - locates the needle in the haystack
+ *
+ * @haystack: The string to search in
+ * @needle: The substring to search for
+ *
+ * Return: A pointer to the needle or NULL
+ */
+char *_strstr(const char *haystack, const char *needle)
+{
+	if (needle == NULL || *needle == '\0')
+	{
+		return ((char *)haystack);
+	}
+
+	while (*haystack != '\0')
+	{
+		char *h = (char *)haystack;
+		char *n = (char *)needle;
+
+		while (*h == *n && *n != '\0')
+		{
+			h++;
+			n++;
+		}
+
+		if (*n == '\0')
+		{
+			return ((char *)haystack);
+		}
+
+		haystack++;
+	}
+
+	return (NULL);
+}

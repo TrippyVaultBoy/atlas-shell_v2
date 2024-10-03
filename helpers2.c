@@ -3,6 +3,7 @@
 
 /**
  * _strdup - Creates a duplicate of a string.
+ *
  * @s: String to duplicate.
  *
  * Return: Pointer to the duplicated string.
@@ -49,6 +50,7 @@ int _strncmp(const char *s1, const char *s2, size_t n)
 
 /**
  * get_custom_env - Custom implementation of getenv()
+ *
  * @var: Variable name to search for
  *
  * Return: Value of the environment variable if found, NULL otherwise
@@ -89,4 +91,34 @@ char *_strchr(const char *s, int c)
 		s++;
 	}
 	return (NULL);
+}
+
+
+/**
+ * *_strcat - function that concatenates two strings
+ *
+ * @dest: parameter
+ * @src: parameter
+ *
+ * Return: Concatenated string
+ */
+char *_strcat(char *dest, char *src)
+{
+	int i = 0;
+	int k = 0;
+
+	while (dest[i] != '\0')
+	{
+		i++;
+	}
+
+	while (src[k] != '\0')
+	{
+		dest[i] = src[k];
+		i++;
+		k++;
+	}
+	dest[i] = '\0';
+
+	return (dest);
 }

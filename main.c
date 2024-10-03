@@ -59,27 +59,8 @@ int main(void)
 		}
 		else
 		{
-			if (*tokens[0] == '/')
-			{
-				parse_command(tokens);
-			}
-			else
-			{
-				char *full_path = find_executable(tokens[0]);
-
-				if (full_path != NULL)
-				{
-					tokens[0] = full_path;
-					parse_command(tokens);
-					free(full_path);
-				}
-				else
-				{
-					fprintf(stderr, "hsh: %s: not found\n", tokens[0]);
-				}
-			}
+			execute_command(tokens);
 		}
-
 	}
 
 	free(command);
